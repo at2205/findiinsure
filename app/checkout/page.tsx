@@ -174,7 +174,7 @@ export default function CheckoutPage() {
   };
 
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async(e: React.FormEvent) => {
     e.preventDefault();
     if (isSubmitting) return;
 

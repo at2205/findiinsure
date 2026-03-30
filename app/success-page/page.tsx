@@ -14,6 +14,14 @@ export default function RegistrationSuccessPage() {
         const orderRef = sessionStorage.getItem("order_ref");
         const policyData = sessionStorage.getItem("policy_details");
 
+
+        if (!orderRef) {
+            console.warn("No transaction found → redirecting");
+            window.location.href = "/";
+            return;
+        }
+
+        setRef(orderRef);
         if (checkout) {
             try {
                 const parsed = JSON.parse(checkout);
