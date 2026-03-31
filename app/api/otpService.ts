@@ -4,7 +4,6 @@ import { API_ENDPOINTS } from "@/config/apiConfig";
 const handleResponse = async (response: Response) => {
     const text = await response.text();
  
-    console.log("🔍 RAW API RESPONSE:", text);
  
     if (text.startsWith("<")) {
         throw new Error("API returned HTML instead of JSON");
@@ -20,8 +19,7 @@ const handleResponse = async (response: Response) => {
 // 🔹 Send OTP
 export const sendOtpAPI = async (mobile: string) => {
     try {
-        console.log("📡 OTP URL:", API_ENDPOINTS.FINDI_INSURE_OTP);
-        console.log("SendOTP AGENT ID ", sessionStorage.getItem("agentId"));
+        
 
  
         const response = await fetch(API_ENDPOINTS.FINDI_INSURE_OTP, {
@@ -43,7 +41,7 @@ export const sendOtpAPI = async (mobile: string) => {
         return await handleResponse(response);
  
     } catch (error: any) {
-        console.error("❌ Send OTP API Error:", error.message);
+        
         throw error;
     }
 };
@@ -71,7 +69,7 @@ export const verifyOtpAPI = async (mobile: string, otp: string) => {
         return await handleResponse(response);
  
     } catch (error: any) {
-        console.error("❌ Verify OTP API Error:", error.message);
+        
         throw error;
     }
 };

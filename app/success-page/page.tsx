@@ -22,18 +22,20 @@ export default function RegistrationSuccessPage() {
         }
 
         setRef(orderRef);
-        if (checkout) {
+        if (policyData) {
             try {
-                const parsed = JSON.parse(checkout);
+                const parsedPolicy = JSON.parse(policyData);
 
-                const firstForm = Object.values(parsed.forms || {})[0] as any;
+                console.log("Policy Data:", parsedPolicy);
 
-                if (firstForm) {
-                    setMobile(firstForm.mobile || "");
-                    setName(firstForm.fullName || "");
-                }
+                setPolicy(parsedPolicy);
+
+                
+                setMobile(parsedPolicy?.msw_mobile || "");
+                setName(parsedPolicy?.msw_customerName || "");
+
             } catch (err) {
-                console.error("Error parsing checkout data", err);
+                console.error("Error parsing policy data", err);
             }
         }
 

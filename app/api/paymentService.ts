@@ -15,7 +15,7 @@ export const fetchVendorsAPI = async () => {
     );
  
     const text = await response.text();
-    console.log("VENDOR RAW:", text);
+   
  
     if (text.startsWith("<")) {
         throw new Error("HTML response");

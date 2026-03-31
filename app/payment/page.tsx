@@ -167,7 +167,7 @@ export default function PaymentPage() {
 
             if (checkout) {
                 const parsed = JSON.parse(checkout);
-                setAmount(parsed.totalAmount || 500);
+                setAmount(parsed.totalAmount);
             }
         }
     }, []);

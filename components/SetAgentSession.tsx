@@ -11,7 +11,7 @@ export default function SetAgentSession({ agentId }: SetAgentSessionProps) {
   useEffect(() => {
     if (agentId) {
       sessionStorage.setItem("agentId", agentId);
-      console.log("Agent ID stored:", agentId);
+      
     }
   }, [agentId]);
 

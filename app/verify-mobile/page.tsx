@@ -51,7 +51,7 @@ export default function VerifyMobilePage() {
     try {
       const res = await sendOtpAPI(mobile);
  
-      console.log("Send OTP Response:", res);
+      
  
       if (res?.status === "00") {
         setOtpSent(true);
@@ -78,7 +78,7 @@ export default function VerifyMobilePage() {
     try {
       const res = await sendOtpAPI(mobile);
  
-      console.log("Resend OTP Response:", res);
+      
  
       if (res?.status === "00") {
         setOtp(["", "", "", "", "", ""]);
@@ -125,7 +125,7 @@ export default function VerifyMobilePage() {
     try {
       const res = await verifyOtpAPI(mobile, otpValue);
  
-      console.log("Verify OTP Response:", res);
+      
  
       if (res?.status === "00") {
  

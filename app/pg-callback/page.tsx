@@ -13,19 +13,21 @@ export default function PGCallbackPage() {
         const params = new URLSearchParams(window.location.search);
 
         const allParams = Object.fromEntries(params);
-        console.log("🔥 PG CALLBACK PARAMS:", allParams);
+        
 
         const statusRaw =
           params.get("Status") ||
           params.get("status") ||
-          params.get("txnStatus");
+          params.get("txnStatus") ||
+          params.get("message"); // fallback
 
         const status = statusRaw?.toLowerCase();
 
-        const orderId = params.get("OrderId");
-        const message = params.get("Message");
-        const bankitTxnId = params.get("BankitTxnId");
-        const amount = params.get("Amount");
+        // ✅ support both formats
+        const orderId = params.get("OrderId") || params.get("ref");
+        const bankitTxnId = params.get("BankitTxnId") || params.get("txnId");
+        const message = params.get("Message") || params.get("message");
+        const amount = params.get("Amount") || params.get("amount");
 
         console.log("Parsed:", {
           status,
@@ -34,27 +36,27 @@ export default function PGCallbackPage() {
           amount,
         });
 
-        
+
         if (!status) {
           console.warn("No PG params found");
           return;
         }
 
-        
+
         if (["canceled", "cancelled", "failure"].includes(status)) {
           alert(message || "Payment Cancelled");
           router.push("/checkout");
           return;
         }
 
-        
+
         if (status !== "success") {
           alert(message || "Payment Failed");
           router.push("/checkout");
           return;
         }
 
-        
+
         console.log("✅ Payment Success");
 
         /* -------------------------------
@@ -100,7 +102,7 @@ export default function PGCallbackPage() {
           paymentStatus: status,
         };
 
-        console.log("📦 PAYLOAD:", payload);
+        
 
         /* -------------------------------
            STEP 3: CALL SERVICE API
@@ -109,7 +111,7 @@ export default function PGCallbackPage() {
 
         const { data } = await registerInsure(payload);
 
-        console.log("✅ API RESPONSE:", data);
+       
 
         // 🔥 FIX HERE (IMPORTANT)
         if (!data || data.status !== "00") {
