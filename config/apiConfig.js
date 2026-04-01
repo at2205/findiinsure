@@ -10,7 +10,7 @@ export const API_ENDPOINTS = {
   FINDI_INSURE_REGISTER: `${SERVER_URL}/BANKITMRA/resources/AESAPI/findiInsureRegistration`,
   PG_CALLBACK: `${SERVER_URL}/BANKITMRA/FindiInsurePGResponse.jsp`,
 };
-
+//ddd
 // export const API_ENDPOINTS = {
 //   FINDI_INSURE_PLANS: `${SERVER_URL}/BANKITMRA_FI/resources/AESAPI/findiInsurePlan`,
 //   FINDI_INSURE_OTP: `${SERVER_URL}/BANKITMRA_FI/resources/AESAPI/findiInsureOtp`,
