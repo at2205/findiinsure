@@ -15,7 +15,7 @@ export default function ProductDetailPage({ params }: { params: Promise<{ slug: 
 
   const [dynamicPrice, setDynamicPrice] = useState<string | null>(null);
   const [dynamicDescription, setDynamicDescription] = useState<string | null>(null);
-  const [activeFlag, setActiveFlag] = useState<string>("1");
+  const [activeFlag, setActiveFlag] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -37,6 +37,8 @@ export default function ProductDetailPage({ params }: { params: Promise<{ slug: 
 
         if (apiProduct.activeFlag !== undefined) {
           setActiveFlag(apiProduct.activeFlag);
+        } else {
+          setActiveFlag("1");
         }
       }
     };
@@ -94,7 +96,7 @@ export default function ProductDetailPage({ params }: { params: Promise<{ slug: 
                 </p>
 
                 {/* Premium Box */}
-                {activeFlag !== "-1" && (
+                {activeFlag !== null && activeFlag !== "-1" && (
                 <div className="border rounded-[14px] p-5 mb-6">
                   <div className="text-[0.8rem] text-gray-500 mb-1">
                     Starting Premium
@@ -113,7 +115,11 @@ export default function ProductDetailPage({ params }: { params: Promise<{ slug: 
 
                 {/* Buttons */}
                 <div className="flex gap-3">
-                  {activeFlag === "-1" ? (
+                  {activeFlag === null ? (
+                    <span className="bg-gray-200 text-transparent px-6 py-3 rounded-full font-semibold animate-pulse select-none">
+                      Loading...
+                    </span>
+                  ) : activeFlag === "-1" ? (
                     <span className="bg-[#E0E4EA] text-[#8A94A6] px-6 py-3 rounded-full font-semibold cursor-not-allowed select-none">
                       Coming Soon
                     </span>
