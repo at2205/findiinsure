@@ -10,6 +10,7 @@ interface Product {
   image: string;
   displayAmount?: string; 
   shortDescription: string;
+  activeFlag?: string;
 }
 
 export default function ProductGrid({ products }: { products: Product[] }) {

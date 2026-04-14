@@ -12,12 +12,12 @@ interface Product {
   displayAmount?: string;
   image: string;
   shortDescription: string;
+  activeFlag?: string;
 }
-
-const COMING_SOON_SLUGS = ["mobile-damage-protection", "cyber-protection"];
 
 export default function ProductCard({ product }: { product: Product }) {
   const { addToCart } = useCart();
+  const isComingSoon = product.activeFlag === "-1";
 
   return (
     <div className="bg-white border border-[#E2E8F0] rounded-[14px] overflow-hidden relative flex flex-col h-full transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_20px_25px_-5px_rgba(28,60,95,0.1),0_10px_10px_-5px_rgba(28,60,95,0.03)] hover:border-transparent group">
@@ -33,9 +33,11 @@ export default function ProductCard({ product }: { product: Product }) {
           height={160}
           className="max-w-[90%] max-h-[90%] object-contain transition-transform duration-300 group-hover:scale-[1.04]"
         />
-        <div className="absolute top-4 right-4 bg-[#1C3C5F] text-white px-3.5 py-1.5 rounded-[30px] text-[0.8rem] font-bold shadow-sm z-10">
-          Starting {product.displayAmount}
-        </div>
+        {!isComingSoon && (
+          <div className="absolute top-4 right-4 bg-[#1C3C5F] text-white px-3.5 py-1.5 rounded-[30px] text-[0.8rem] font-bold shadow-sm z-10">
+            Starting {product.displayAmount}
+          </div>
+        )}
       </div>
 
       {/* Content */}
@@ -49,37 +51,34 @@ export default function ProductCard({ product }: { product: Product }) {
 
         {/* Actions */}
         <div className="flex gap-2.5 mt-auto max-md:flex-col">
-          {COMING_SOON_SLUGS.includes(product.slug) ? (
+          <Link
+            href={`/products/${product.slug}`}
+            className="flex-1 inline-flex items-center justify-center py-3 px-1.5 text-[0.85rem] font-semibold rounded-[30px] border-2 border-[#1C3C5F] text-[#1C3C5F] hover:bg-[#1C3C5F] hover:text-white hover:-translate-y-0.5 transition-all text-center"
+          >
+            View Details
+          </Link>
+          {isComingSoon ? (
             <span className="flex-1 inline-flex items-center justify-center py-3 px-1.5 text-[0.85rem] font-semibold rounded-[30px] bg-[#E0E4EA] text-[#8A94A6] cursor-not-allowed select-none text-center">
               Coming Soon
             </span>
           ) : (
-            /* Active product buttons */
-            <>
-              <Link
-                href={`/products/${product.slug}`}
-                className="flex-1 inline-flex items-center justify-center py-3 px-1.5 text-[0.85rem] font-semibold rounded-[30px] border-2 border-[#1C3C5F] text-[#1C3C5F] hover:bg-[#1C3C5F] hover:text-white hover:-translate-y-0.5 transition-all text-center"
-              >
-                View Details
-              </Link>
-              <button
-                onClick={() =>
-                  addToCart(
-                    {
-                      id: product.id,
-                      name: product.name,
-                      premium: product.premium,
-                      displayAmount: product.displayAmount,
-                      slug: product.slug,
-                    },
-                    true
-                  )
-                }
-                className="flex-1 inline-flex items-center justify-center py-3 px-1.5 text-[0.85rem] font-semibold rounded-[30px] bg-[#D43F33] text-white shadow-[0_4px_14px_rgba(212,63,51,0.3)] hover:bg-[#b8352b] hover:-translate-y-0.5 transition-all cursor-pointer"
-              >
-                Buy Now
-              </button>
-            </>
+            <button
+              onClick={() =>
+                addToCart(
+                  {
+                    id: product.id,
+                    name: product.name,
+                    premium: product.premium,
+                    displayAmount: product.displayAmount,
+                    slug: product.slug,
+                  },
+                  true
+                )
+              }
+              className="flex-1 inline-flex items-center justify-center py-3 px-1.5 text-[0.85rem] font-semibold rounded-[30px] bg-[#D43F33] text-white shadow-[0_4px_14px_rgba(212,63,51,0.3)] hover:bg-[#b8352b] hover:-translate-y-0.5 transition-all cursor-pointer"
+            >
+              Buy Now
+            </button>
           )}
         </div>
       </div>

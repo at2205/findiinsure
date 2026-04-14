@@ -10,7 +10,6 @@ export default async function HomePage() {
 
   const agentId = apiResponse?.agentId || null;
 
-  // ✅ Inline type (fixes TS error cleanly)
   const products: {
     id: string;
     name: string;
@@ -19,7 +18,7 @@ export default async function HomePage() {
     displayAmount?: string;
     image: string;
     shortDescription: string;
-    active: boolean;
+    activeFlag: string;
   }[] =
     apiResponse?.data?.map((item: any) => ({
       id: item.id,
@@ -29,11 +28,11 @@ export default async function HomePage() {
       displayAmount :item.displayAmount,
       image: item.imagePath,
       shortDescription: item.planDescription,
-      active: item.isActive === "1",
+      activeFlag: item.activeFlag ?? "1",
     })) || [];
 
-  // ✅ No more "implicit any" error
-  const highlights = products.filter((p) => p.active).slice(0, 3);
+  // Show active + coming soon on home, take first 3
+  const highlights = products.filter((p) => p.activeFlag === "1" || p.activeFlag === "-1").slice(0, 3);
 
   return (
     <>

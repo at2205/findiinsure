@@ -5,7 +5,6 @@ import { fetchInsurePlans } from "@/services/apiService";
 export default async function ProductsPage() {
   const apiResponse = await fetchInsurePlans();
 
-  // ✅ Inline type to avoid "implicit any"
   const products: {
     id: string;
     name: string;
@@ -14,7 +13,7 @@ export default async function ProductsPage() {
     displayAmount?: string;
     image: string;
     shortDescription: string;
-    active: boolean;
+    activeFlag: string;
   }[] =
     apiResponse?.data?.map((item: any) => ({
       id: item.id,
@@ -24,11 +23,11 @@ export default async function ProductsPage() {
       displayAmount :item.displayAmount,
       image: item.imagePath,
       shortDescription: item.planDescription,
-      active: item.isActive === "1",
+      activeFlag: item.activeFlag ?? "1",
     })) || [];
 
-  // ✅ No TS error here
-  const activeProducts = products.filter((p) => p.active);
+  // Show active (1) and coming soon (-1), hide disabled (0)
+  const visibleProducts = products.filter((p) => p.activeFlag === "1" || p.activeFlag === "-1");
 
   return (
     <>
@@ -39,7 +38,7 @@ export default async function ProductsPage() {
 
       <section className="py-20">
         <div className="max-w-[1200px] mx-auto px-6">
-          <ProductGrid products={activeProducts} />
+          <ProductGrid products={visibleProducts} />
         </div>
       </section>
     </>
