@@ -20,7 +20,7 @@ export default async function ProductsPage() {
       name: item.planName,
       slug: item.planName.toLowerCase().replace(/\s+/g, "-"),
       premium: Number(item.amount),
-      displayAmount :item.displayAmount,
+      displayAmount: item.displayAmount,
       image: item.imagePath,
       shortDescription: item.planDescription,
       activeFlag: item.activeFlag ?? "1",
