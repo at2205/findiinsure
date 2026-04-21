@@ -1,11 +1,14 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
-};
-module.exports = {
   images: {
-    domains: ["portal.bankit.in"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "portal.bankit.in",
+        port: "9090",
+      },
+    ],
   },
 };
 
