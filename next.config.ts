@@ -7,6 +7,7 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "portal.bankit.in",
         port: "9090",
+         pathname: "/Demo/images/**",
       },
     ],
   },
