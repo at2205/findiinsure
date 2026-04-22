@@ -1,7 +1,7 @@
 // export const SERVER_URL = "https://red.bankit.in";
 // export const SERVER_URL = "http://localhost:8001";
 export const SERVER_URL = "https://portal.bankit.in:9090";
-// comment
+// comment1
 
 export const FINDI_INSURE_BASE = "https://uat.bankit.in/BANKITMRA/resources/AESAPI";
 
