@@ -12,7 +12,7 @@ export default function Hero() {
           {/* Badge */}
           <div className="inline-flex items-center gap-1.5 px-4 py-1.5 bg-white/10 border border-white/15 rounded-full text-white/85 text-[0.85rem] font-medium mb-6 backdrop-blur-sm">
             <span className="w-1.5 h-1.5 bg-[#4ADE80] rounded-full animate-pulse" />
-            IRDA Registered Corporate Agent
+            IRDAI Registered Corporate Agent
           </div>
 
           {/* Title */}

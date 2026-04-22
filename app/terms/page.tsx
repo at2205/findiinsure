@@ -21,7 +21,7 @@ export default function TermsPage() {
             <div className="pb-9 border-b border-[#E2E8F0]">
               <h3 className="text-[1.2rem] text-[#1C3C5F] font-bold mb-3">Insurance Products</h3>
               <p className="text-[#4A5568] leading-[1.8]">
-                FindiInsure acts as a corporate agent (CA0837) under IRDA regulations. Insurance products are offered by respective insurance companies. Policy issuance, claims, and coverage are subject to the insurer&apos;s terms and conditions.
+                FindiInsure acts as a corporate agent (CA0837) under IRDAI regulations. Insurance products are offered by respective insurance companies. Policy issuance, claims, and coverage are subject to the insurer&apos;s terms and conditions.
               </p>
             </div>
             <div>

@@ -2,13 +2,13 @@
   "siteName": "FindiInsure",
   "companyName": "Bankit Services Pvt Ltd",
   "companyGroup": "a Findi Group company",
-  "irdaNo": "IRDA Regd No CA0837 Corporate Agent",
+  "irdaNo": "IRDAI Regd No CA0837 Corporate Agent",
   "logoPath": "/images/Findiinsure_identity.jpg",
   "supportPhone": "+91 8142600000",
   "supportEmail": "support@findiinsure.com",
   "supportWhatsapp": "+91 9311340456",
   "address": "708 711 7th Floor Nehru Place New Delhi 110019",
-  "disclaimerText": "FindiInsure is a brand operated by Bankit Services Pvt Ltd IRDA Corporate Agent CA0837. Insurance products are offered by respective insurance companies. Bankit Services Pvt Ltd acts only as a distributor. Policy issuance, claims, and coverage are subject to insurer terms and conditions. Premium once paid is non refundable unless specified by insurer. Please read policy wording carefully before purchase. For support contact our helpdesk.",
+  "disclaimerText": "FindiInsure is a brand operated by Bankit Services Pvt Ltd IRDAI Corporate Agent CA0837. Insurance products are offered by respective insurance companies. Bankit Services Pvt Ltd acts only as a distributor. Policy issuance, claims, and coverage are subject to insurer terms and conditions. Premium once paid is non refundable unless specified by insurer. Please read policy wording carefully before purchase. For support contact our helpdesk.",
   "navigation": [
     { "label": "Home", "href": "/" },
     { "label": "Products", "href": "/products" },
@@ -24,8 +24,8 @@
   "features": [
     {
       "icon": "🔒",
-      "title": "IRDA Registered",
-      "description": "We are a certified corporate agent (CA0837) regulated by IRDA."
+      "title": "IRDAI Registered",
+      "description": "We are a certified corporate agent (CA0837) regulated by IRDAI."
     },
     {
       "icon": "⚡",
