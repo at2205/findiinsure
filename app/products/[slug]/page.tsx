@@ -70,21 +70,28 @@ export default function ProductDetailPage({ params }: { params: Promise<{ slug: 
 
             {/* Image + Info */}
             <div className="grid grid-cols-2 max-lg:grid-cols-1">
-              
+
               {/* Image */}
               <div className="bg-[#F1F3F6] flex items-center justify-center p-8">
-                <Image
+                {/* <Image
                   src={product.image}
                   alt={product.name}
                   width={400}
                   height={280}
                   className="object-contain"
+                /> */}
+                <img
+                  src={product.image}
+                  alt="images"
+                  width={400}
+                  height={280}
+                  className=" object-contain"
                 />
               </div>
 
               {/* Info */}
               <div className="p-10 flex flex-col justify-center">
-                
+
                 {/* Title */}
                 <h2 className="text-[1.75rem] font-extrabold mb-2">
                   {product.name}
@@ -97,20 +104,20 @@ export default function ProductDetailPage({ params }: { params: Promise<{ slug: 
 
                 {/* Premium Box */}
                 {activeFlag !== null && activeFlag !== "-1" && (
-                <div className="border rounded-[14px] p-5 mb-6">
-                  <div className="text-[0.8rem] text-gray-500 mb-1">
-                    Starting Premium
-                  </div>
+                  <div className="border rounded-[14px] p-5 mb-6">
+                    <div className="text-[0.8rem] text-gray-500 mb-1">
+                      Starting Premium
+                    </div>
 
-                  <div className="flex items-baseline gap-2">
-                    <span className="text-[2rem] font-bold text-[#1C3C5F]">
-                      {dynamicPrice || `₹${product.premium}`}
-                    </span>
-                    <span className="text-[0.9rem] text-gray-500">
-                      / {product.tenure}
-                    </span>
+                    <div className="flex items-baseline gap-2">
+                      <span className="text-[2rem] font-bold text-[#1C3C5F]">
+                        {dynamicPrice || `₹${product.premium}`}
+                      </span>
+                      <span className="text-[0.9rem] text-gray-500">
+                        / {product.tenure}
+                      </span>
+                    </div>
                   </div>
-                </div>
                 )}
 
                 {/* Buttons */}
