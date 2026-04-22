@@ -26,9 +26,16 @@ export default function ProductCard({ product }: { product: Product }) {
 
       {/* Image */}
       <div className="w-full h-[200px] bg-[#F1F3F6] flex items-center justify-center overflow-hidden relative p-5">
-        <Image
+        {/* <Image
           src={product.image}
           alt={`${product.name} insurance`}
+          width={280}
+          height={160}
+          className="max-w-[90%] max-h-[90%] object-contain transition-transform duration-300 group-hover:scale-[1.04]"
+        /> */}
+        <img
+          src={product.image}
+          alt="images"
           width={280}
           height={160}
           className="max-w-[90%] max-h-[90%] object-contain transition-transform duration-300 group-hover:scale-[1.04]"
